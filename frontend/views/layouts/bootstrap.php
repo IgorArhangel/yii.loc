@@ -1,28 +1,31 @@
-<?php
+<?
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 \frontend\assets\MainAsset::register($this);
 ?>
-<?php $this->beginpage()?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Realestate Bootstrap Theme </title>
-    <meta charset="<?= Yii::$app->charset ?>" />
+    <title><?=$this->title ?> </title>
+    <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?=Html::csrfMetaTags() ?>
+    <?php $this->head() ?>
 
-    <?php $this->head()?>
+</head>
+
 <body>
-<?php $this->beginbody()?>
-<?= $this->render("//common/head")?>
+<?php $this->beginBody() ?>
 
-<?=$content?>
-
+<?=$this->render("//common/head") ?>
 
 
-<?= $this->render("//common/footer")?>
+<?=$content ?>
 
+
+
+<?=$this->render("//common/footer") ?>
 
 
 <!-- Modal -->
@@ -61,7 +64,11 @@ use yii\bootstrap\Nav;
 </div>
 <!-- /.modal -->
 
-<?php $this->endbody()?>
+
+<?php $this->endBody() ?>
 </body>
 </html>
-<?php $this->endpage()?>
+<?php $this->endPage() ?>
+
+
+
