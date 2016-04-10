@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute' => 'main',
     'modules' => [
         'main' => [
             'class' => 'app\modules\main\Module',
@@ -18,6 +19,7 @@ return [
     ],
 
     'components' => [
+
         'mail' => [
             'class'            => 'zyx\phpmailer\Mailer',
             'viewPath'         => '@common/mail',
@@ -28,10 +30,17 @@ return [
                 'port'       => '465',
                 'smtpsecure' => 'ssl',
                 'smtpauth'   => true,
-                'username'   => '',
-                'password'   => '',
+                'username'   => 'it-stop.ru@yandex.ru',
+                'password'   => 'RestarT1213',
+                'ishtml' => true,
+                'charset' => 'UTF-8',
             ],
         ],
+
+        'common' => [
+            'class' => 'frontend\components\Common',
+        ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -47,12 +56,6 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
         ],
     ],
     'params' => $params,

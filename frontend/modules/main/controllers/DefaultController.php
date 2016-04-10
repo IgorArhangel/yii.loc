@@ -5,33 +5,50 @@ namespace app\modules\main\controllers;
 use frontend\components\Common;
 use yii\web\Controller;
 
-/**
- * Default controller for the `main` module
- */
 class DefaultController extends Controller
 {
-
     public function actionIndex()
     {
-        $this->layout = "inner";
+        $this->layout = "bootstrap";
+
         return $this->render('index');
     }
+
     public function actionService(){
+
         $locator = \Yii::$app->locator;
         $cache = $locator->cache;
 
-        $cache->set("test", 232323);
+        $cache->set("test",1);
+
         print $cache->get("test");
+
     }
 
     public function actionEvent(){
-        $component = new Common();
-        $component->on(Common::EVENT_NOTIFY, [$component, 'notifyAdmin']);
-        $component->sendMail("igorek2013@gmail.com", "test", "Test2");
-        $component->off(Common::EVENT_NOTIFY, [$component, 'notifyAdmin']);
+
+        $component = \Yii::$app->common; //new Common();
+        $component->on(Common::EVENT_NOTIFY,[$component,'notifyAdmin']);
+        $component->sendMail("test@domain.com","Test","Test text");
+        $component->off(Common::EVENT_NOTIFY,[$component,'notifyAdmin']);
+
     }
 
     public function actionPath(){
-        //print \Yii::getAlias('@webroot');
+        // @yii
+        // @app
+        //@runtime
+        //@webroot
+        //@web
+        //@vendor
+        //@bower
+        //@npm
+        // @frontend
+        // @backend
+
+        print \Yii::getAlias('@test');
+
+
+
     }
 }
